@@ -1,0 +1,36 @@
+{
+  "name": "flow-ai",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:full": "npm run build && concurrently -k \"vite --host 0.0.0.0\" \"wrangler pages dev dist --port 8788 --ai AI\"",
+    "build": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p functions/tsconfig.json && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "pages:dev": "npm run build && wrangler pages dev dist --ai AI",
+    "deploy": "npm run build && wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "concurrently": "^9.1.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8",
+    "wrangler": "^4.45.0"
+  }
+}

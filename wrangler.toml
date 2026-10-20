@@ -1,0 +1,6 @@
+name = "flow-ai"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-19"
+
+[vars]
+WORKERS_AI_MODEL = "@cf/meta/llama-3.2-11b-vision-instruct"
