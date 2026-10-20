@@ -64,8 +64,10 @@ export function checkRateLimit(request: Request): Response | null {
   }
   return null;
 }
-
-export async function readJson<T>(request: Request, schema: ZodType<T>): Promise<T> {
+export async function readJson<S extends z.ZodTypeAny>(
+  request: Request,
+  schema: S,
+): Promise<z.output<S>> {
   const contentLength = Number(request.headers.get('content-length') ?? '0');
   if (Number.isFinite(contentLength) && contentLength > 7_800_000) {
     throw new ApiFault(413, 'PAYLOAD_TOO_LARGE', 'The request is too large. Use no more than 5 MB of textbook images in one lesson.');
