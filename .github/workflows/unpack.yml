@@ -1,0 +1,14 @@
+name: Unpack Flow AI
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          set -e
+          unzip -q Flow-AI-Cloudflare-AI.zip -d /tmp/flowai
+          find /tmp/flowai -name package.json
