@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import Diagram from './components/Diagram';
 import {
-  type Attempt, type ClassLevel, type Evaluation, type SavedLesson,
+  type Attempt, type ClassLevel, type SavedLesson,
 } from './lib/contracts';
 import {
   evaluateAnswer, explainConcept, FlowApiError, getHint, makeLessonContext, revealAnswer,
