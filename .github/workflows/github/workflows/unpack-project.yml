@@ -1,0 +1,29 @@
+name: Unpack Flow AI ZIP
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract project
+        run: |
+          set -e
+          mkdir -p /tmp/flow-ai
+          unzip -q Flow-AI-Cloudflare-AI.zip -d /tmp/flow-ai
+          cp -a /tmp/flow-ai/flow-ai/. .
+          rm Flow-AI-Cloudflare-AI.zip
+
+      - name: Save files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Extract Flow AI project" || exit 1
+          git push
