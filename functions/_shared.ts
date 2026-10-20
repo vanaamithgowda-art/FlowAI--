@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import type { ZodType } from 'zod';
 import type { ExplainRequest, LessonContext } from '../src/lib/contracts';
 
 export interface WorkersAiBinding {
